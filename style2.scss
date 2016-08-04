@@ -1,0 +1,62 @@
+$azul: #3434b9;
+$vermelho: #cc2e2e;
+$laranja: #f5b133;
+$verde: #42ba5e;
+$rosa: #ea60ea;
+
+@function fixBorder($cor){
+    @return  8px solid desaturate(darken($cor, 15%), 20%); 
+}
+
+@mixin geraBorda($cor){
+    @extend .box;
+    color: darken($cor, 30%);
+    border: fixBorder($cor);
+    background-color: $cor;
+}
+@mixin geraTitle($cor){
+    color: $cor;
+    font-weight: 100;
+}
+
+h1{
+    @include geraTitle($verde);
+    font-size: 30px;
+    line-height: 1px;
+}
+h2{
+    @include geraTitle($verde);
+    font-size: 20px;
+    border-bottom: 5px solid #36c730;
+}
+body{
+    font-size: 20px;
+}
+.box{
+    padding: 20px;
+    margin: 20px auto;
+    width: 50%;
+    border-radius: 30px;
+    em{
+        font-weight: bold;
+    }
+}
+
+/* Boxes */
+.azul{
+    $azul: blue !default;
+    @include geraBorda($azul);
+}
+
+.vermelho{
+    @include geraBorda($vermelho);
+}
+.laranja{
+    @include geraBorda($laranja);
+}
+.verde{
+    @include geraBorda($verde);
+}
+.rosa{
+    @include geraBorda($rosa);
+}
